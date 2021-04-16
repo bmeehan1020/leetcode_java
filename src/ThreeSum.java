@@ -1,28 +1,27 @@
+import java.util.*;
+
 /**
  * CTCI
  * Solved? NO
  */
-
-import java.util.*;
-
 class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        HashSet<List<Integer>> hs = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                hs.add(Arrays.asList(nums[i], nums[j]));
-            }
+        HashMap<Integer, Integer> set = new HashMap<>();
+        for (Integer n : nums) {
+            set.put(n, set.getOrDefault(n, 0) + 1);
         }
+
+
         ArrayList<List<Integer>> result = new ArrayList<>();
-        for (List<Integer> pair : hs){
-            for (int n : nums) {
-                if (n == -(pair.get(0) + pair.get(1))) {
-                    result.add(Arrays.asList(n, pair.get(0), pair.get(1)));
-                    hs.remove(Arrays.asList(n, pair.get(0)));
-                    hs.remove(Arrays.asList(n, pair.get(1)));
-                }
-            }
-        }
+//        for (List<Integer> pair : set){
+//            for (int n : nums) {
+//                if (n == -(pair.get(0) + pair.get(1))) {
+//                    result.add(Arrays.asList(n, pair.get(0), pair.get(1)));
+//                    set.remove(Arrays.asList(n, pair.get(0)));
+//                    set.remove(Arrays.asList(n, pair.get(1)));
+//                }
+//            }
+//        }
 
         return result;
     }
